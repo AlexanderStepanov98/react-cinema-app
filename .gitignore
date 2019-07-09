@@ -1,0 +1,6 @@
+# ignore all .idea directory files
+/.idea/*
+# ignore all node_modules directory files
+/node_modules/*
+# ignore all production build files from dist directory
+/dist

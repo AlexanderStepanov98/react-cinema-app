@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Arial, monospace;
+}
+
+h1 {
+    margin: 20px 10px;
+}
+
+p {
+    margin: 10px 50px;
+}
+
+ul {
+    margin: 10px 70px;
+}
+
+.defaultButton {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border: 2px solid black;
+    margin: 10px 50px;
+}
