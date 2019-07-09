@@ -25,6 +25,14 @@ module.exports = {
                     modules: true,
                     localIdentName: '[name]_[local]_[hash:base64:5]'
                 }
+            },
+            {
+                test: /\.(jpg|png|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: './assets/',
+                }
             }
         ]
     },

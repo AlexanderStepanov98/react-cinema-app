@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./App.css";
+import img from "../assets/palm.png";
 
 export default class App extends Component {
     okButtonHandler() {
@@ -24,6 +25,7 @@ export default class App extends Component {
                 <p>Also, it will be used to learn how to work with GitHub while developing React application</p>
                 <p>Press this button if you have read the above text</p>
                 <button className={styles.defaultButton} onClick={() => this.okButtonHandler()}>OK</button>
+                <img src={img} alt="palm image"/>
             </div>
         )
     }
