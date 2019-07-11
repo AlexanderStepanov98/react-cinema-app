@@ -46,20 +46,18 @@ const getSessionsByCityIdAndMovieIdAndDate = (cityId, movieId, date) => {
 
 const getAllSessions = (cityId, movieId, date) => {
     return getCinemasByCityId(cityId)
-           .then(resp => Promise.all(resp.map(cinema => getSessionInCinema(cinema.id, movieId, date))))
-           .then(resp => resp.filter(item => item !== undefined))
+               .then(resp => Promise.all(resp.map(cinema => getSessionInCinema(cinema.id, movieId, date))))
+               .then(resp => resp.filter(item => item !== undefined))
 };
 
 // resp.data.content.forEach(item => data.push(...item.times)); - should be refactored in less complicated way
-const getSessionInCinema = (cinemaId, movieId, date) => {
+const getSessionsInCinema = (cinemaId, movieId, date) => {
     return axios.get(`${BASE_URL}/rest/cinema/${cinemaId}/film/${movieId}/shows?${KEY_AND_SIZE}&date=${date}&detalization=FULL`)
                 .then(resp => {
                     if (resp.data.cinemas[0] !== undefined) {
-                        const data = [];
-                        resp.data.content.forEach(item => data.push(...item.times));
                         return {
                             cinema: resp.data.cinemas[0].name,
-                            sessions: data
+                            sessions: resp.data.content.map(item => item.times.flat()).flat()
                         }
                     }
                 })
@@ -75,7 +73,7 @@ const api = {
     getActorsByMovieId,
     getSessionsByCityIdAndMovieIdAndDate,
     getAllSessions,
-    getSessionInCinema
+    getSessionsInCinema
 };
 
 export default api
