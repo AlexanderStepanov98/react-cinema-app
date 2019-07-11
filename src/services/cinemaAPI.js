@@ -88,6 +88,18 @@ const getOneCinemaSession = (cinemaId, movieId, date) => {
                 })
 };
 
+// Get hall scheme on particular session
+const getHallScheme = (sessionId) => {
+    return axios.get(`${BASE_URL}/rest/showtime/${sessionId}/schema?apiKey=${API_KEY}`)
+        .then(resp => {
+            if (resp.data.sectors[0]) {
+                return {
+                    rows: resp.data.sectors[0].rows
+                }
+            }
+        })
+};
+
 const api = {
     getCities,
     getDistributionsByCityId,
@@ -99,7 +111,8 @@ const api = {
     getAllMovieSessions,
     getOneMovieSession,
     getAllCinemaSessions,
-    getOneCinemaSession
+    getOneCinemaSession,
+    getHallScheme
 };
 
 export default api
