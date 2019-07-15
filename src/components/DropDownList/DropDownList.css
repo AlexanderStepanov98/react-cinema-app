@@ -1,0 +1,29 @@
+select {
+    display: inline;
+    margin: 0;
+    padding: 5px;
+    width: 200px;
+    background-color: #363434;
+    color: #efecec;
+    font-size: 16px;
+    border: 2px solid #5c5757;
+}
+
+select:hover {
+    background-color: #5c5757;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
