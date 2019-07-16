@@ -4,6 +4,7 @@ import api from "../../services/cinemaAPI";
 import { connect } from "react-redux";
 import { updateCity } from "../../actions/actions";
 import styles from "./Header.css";
+import { Link } from "react-router-dom";
 
 const Header = ({initialCityId, onCitySelect}) => {
 
@@ -19,8 +20,8 @@ const Header = ({initialCityId, onCitySelect}) => {
         <div className={container}>
             <div className={linksContainer}>
                 <ul>
-                    <li><a href="/movies">movies</a></li>
-                    <li><a href="/cinemas">cinemas</a></li>
+                    <li><Link to="/movies">movies</Link></li>
+                    <li><Link to="/cinemas">cinemas</Link></li>
                 </ul>
             </div>
             <div className={dropdownContainer}>
