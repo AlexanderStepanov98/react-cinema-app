@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-align: center;
+}
+
+.filmTitle {
+    margin: 5px;
+    font-size: 22px;
+}
+
+.link {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
+.poster {
+    object-fit: contain;
+    max-width: 100%;
+}

@@ -1,0 +1,45 @@
+.container {
+    padding: 20px;
+}
+
+.cinemaTitle {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 20px 0 30px;
+}
+
+.filmsList {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+
+}
+
+.filmsListItem {
+    width: 23%;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 20px 1% 50px;
+}
+
+@media (max-width: 1199px) {
+    .filmsListItem {
+        width: 31%;
+        padding: 25px 1%;
+    }
+}
+
+@media (max-width: 959px) {
+    .filmsListItem {
+        width: 46%;
+        padding: 25px 2%;
+    }
+}
+
+@media (max-width: 599px) {
+    .filmsListItem {
+        width: 100%;
+    }
+}

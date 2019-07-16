@@ -3,6 +3,7 @@ import axios from "axios";
 // Constants for the request URLs
 const PROXY = "cors-anywhere.herokuapp.com";
 const BASE_URL = `https://${PROXY}/api.kino-teatr.ua`;
+const BASE_URL_WITHOUT_PROXY = `https:///api.kino-teatr.ua`;
 const API_KEY = "pol1kh111";
 const DEFAULT_RESPONSE_SIZE = 100;
 const KEY_AND_SIZE = `apiKey=${API_KEY}&size=${DEFAULT_RESPONSE_SIZE}`;
@@ -39,7 +40,7 @@ const getCinemaById = (id) => {
 
 // Get the movie's main poster URL (should be inserted in the src attribute)
 const getPosterLinkByMovieId = (id) => {
-    return `${BASE_URL}/public/film/${id}/poster?width=300&height=400&ratio=1`
+    return `${BASE_URL_WITHOUT_PROXY}/public/film/${id}/poster?width=300&height=400&ratio=1`
 };
 
 // Get the list of starring actors in the particular movie
