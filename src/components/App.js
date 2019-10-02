@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styles from "./App.css";
-import img from "../assets/palm.png";
+import { Switch, Route } from 'react-router-dom';
+import Header from "./Header/Header";
+import Button from "../containers/Button";
 
 export default class App extends Component {
     okButtonHandler() {
@@ -10,22 +12,10 @@ export default class App extends Component {
     render() {
         return (
             <div className={styles.container}>
-                <h1>This is React boilerplate</h1>
-                <p>It is used for:</p>
-                <ul>
-                    <li>Speeding up the beginning of React development</li>
-                    <li>Learning how to set up development tools:</li>
-                    <ul>
-                        <li>Webpack</li>
-                        <li>Babel</li>
-                        <li>EsLint</li>
-                        <li>Whatever...</li>
-                    </ul>
-                </ul>
-                <p>Also, it will be used to learn how to work with GitHub while developing React application</p>
-                <p>Press this button if you have read the above text</p>
-                <button className={styles.defaultButton} onClick={() => this.okButtonHandler()}>OK</button>
-                <img src={img} alt="palm image"/>
+                <Header/>
+                <Switch>
+                    <Route path={"/movies"} component={Button}/>
+                </Switch>
             </div>
         )
     }

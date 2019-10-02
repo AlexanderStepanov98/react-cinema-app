@@ -7,11 +7,9 @@ const DropDownList = ({initialValue, items, onSelect}) => {
 
     return (
         <div className={container}>
-            <div className={content}>
-                <select value={initialValue} onChange={(e) => onSelect(e.target.value)}>
-                    {items.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
-                </select>
-            </div>
+            <select value={initialValue} onChange={(e) => onSelect(e.target.value)}>
+                {items.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
+            </select>
         </div>
     )
 };
