@@ -1,34 +1,65 @@
-const rootReducer = (state = {}, action) => {
+import { actionTypes, initialState } from "../utils/constants";
+
+const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "UPDATE_CITY":
+        case actionTypes.UPDATE_SELECTED_CITY:
             return {
                 ...state,
-                cityId: action.payload
+                city: action.payload.city
             };
-        case "UPDATE_DATE":
+        case actionTypes.UPDATE_SELECTED_DATE:
             return {
                 ...state,
-                date: action.payload
+                selectedDate: action.payload.selectedDate
             };
-        case "UPDATE_URL":
+        case actionTypes.UPDATE_URL:
             return {
                 ...state,
-                date: action.payload
+                url: action.payload.url
             };
-        case "UPDATE_SELECTED_MOVIE":
+        case actionTypes.UPDATE_SELECTED_MOVIE:
             return {
                 ...state,
-                selectedMovieId: action.payload
+                selectedMovie: action.payload.selectedMovie
             };
-        case "UPDATE_SELECTED_CINEMA":
+        case actionTypes.UPDATE_SELECTED_CINEMA:
             return {
                 ...state,
-                selectedCinemaId: action.payload
+                selectedCinema: action.payload.selectedCinema
             };
-        case "UPDATE_SHOPPING_CART":
+        case actionTypes.UPDATE_CART:
             return {
                 ...state,
-                shoppingCart: action.payload
+                cart: action.payload.cart
+            };
+        case actionTypes.START_REQUEST:
+            return {
+                ...state,
+                isRequesting: {
+                    ...state.isRequesting,
+                    [action.payload.path]: action.payload.value,
+                }
+            };
+        case actionTypes.REQUEST_SUCCEED:
+            return {
+                ...state,
+                isRequesting: {
+                    ...state.isRequesting,
+                    [action.payload.path]: action.payload.value,
+                }
+            };
+        case actionTypes.REQUEST_FAILED:
+            return {
+                ...state,
+                isRequesting: {
+                    ...state.isRequesting,
+                    [action.payload.path]: action.payload.value,
+                },
+                error: {
+                    message: action.payload.error.message,
+                    code: action.payload.error.code,
+                    details: action.payload.error.details,
+                }
             };
         default:
             return state

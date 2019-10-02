@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DropDownList from "../DropDownList/DropDownList";
-import api from "../../services/cinemaAPI";
+import api from "../../utils/cinemaAPI";
 import { connect } from "react-redux";
 import { updateCity } from "../../actions/actions";
 import styles from "./Header.css";

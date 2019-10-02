@@ -1,11 +1,13 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
-import { getCurrentDate } from "./services/dateGenerator";
+import { getCurrentDate } from "./utils/dateGenerator";
+import { initialState } from "./utils/constants";
 
 const preloadedState = {
+    ...initialState,
     cityId: 5,
-    date: getCurrentDate(),
+    selectedDate: getCurrentDate(),
     url: "/movies"
 };
 
