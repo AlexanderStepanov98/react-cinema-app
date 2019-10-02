@@ -63,6 +63,15 @@ export const updateMovies = (movies) => {
     }
 };
 
+export const updateCinemas = (cinemas) => {
+    return {
+        type: actionTypes.UPDATE_CINEMAS,
+        payload: {
+            cinemas: cinemas,
+        }
+    }
+};
+
 export const updateSelectedDate = (date) => {
     return {
         type: actionTypes.UPDATE_SELECTED_DATE,
@@ -75,55 +84,101 @@ export const updateSelectedDate = (date) => {
 export const updateUrl = (url) => {
     return {
         type: actionTypes.UPDATE_URL,
-        payload: url
+        payload: {
+            url: url
+        }
     }
 };
 
 export const updateSelectedMovie = (movie) => {
     return {
         type: actionTypes.UPDATE_SELECTED_MOVIE,
-        payload: movie
+        payload: {
+            selectedMovie: movie
+        }
     }
 };
 
 export const updateSelectedCinema = (cinema) => {
     return {
         type: actionTypes.UPDATE_SELECTED_CINEMA,
-        payload: cinema
+        payload: {
+            selectedCinema: cinema
+        }
     }
 };
 
-export const updateShoppingCart = (tickets) => {
+export const updateScheme = (scheme) => {
+    return {
+        type: actionTypes.UPDATE_SCHEME,
+        payload: {
+            scheme: scheme
+        }
+    }
+};
+
+export const updateShoppingCart = (places, price) => {
     return {
         type: actionTypes.UPDATE_CART,
-        payload: tickets
+        payload: {
+            selectedPlaces: places,
+            totalPrice: price,
+        }
     }
 };
 
 export const getCities = () => dispatch => {
     dispatch(startRequest('cities'));
 
-    api.getCities()
-        .then(response => {
-            dispatch(requestSucceed('cities'));
-            dispatch(updateCities(response));
-        })
-        .catch(error => {
-            dispatch(requestFailed('cities', error));
-            dispatch(updateCities({}));
-        })
+    return api.getCities()
+    .then(response => {
+        dispatch(requestSucceed('cities'));
+        dispatch(updateCities(response));
+    })
+    .catch(error => {
+        dispatch(requestFailed('cities', error));
+        dispatch(updateCities([]));
+    })
 };
 
-export const getDistributions = (cityId) => dispatch => {
+export const getMovies = cityId => dispatch => {
     dispatch(startRequest('movies'));
 
-    api.getDistributionsByCityId(cityId)
-        .then(response => {
-            dispatch(requestSucceed('movies'));
-            dispatch(updateMovies(response));
-        })
-        .catch(error => {
-            dispatch(requestFailed('movies', error));
-            dispatch(updateMovies({}));
-        })
+    return api.getDistributionsByCityId(cityId)
+    .then(response => {
+        dispatch(requestSucceed('movies'));
+        dispatch(updateMovies(response));
+    })
+    .catch(error => {
+        dispatch(requestFailed('movies', error));
+        dispatch(updateMovies([]));
+    })
+};
+
+export const getCinemas = cityId => dispatch => {
+    dispatch(startRequest('cinemas'));
+
+    return api.getCinemasByCityId(cityId)
+    .then(response => {
+        dispatch(requestSucceed('cinemas'));
+        dispatch(updateCinemas(response))
+    })
+    .catch(error => {
+        dispatch(requestFailed('cinemas', error));
+        dispatch(updateCinemas([]))
+    })
+};
+
+export const getScheme = sessionId => dispatch => {
+    dispatch(startRequest('scheme'));
+
+    return api.getHallScheme(sessionId)
+    .then(response => {
+        dispatch(requestSucceed('scheme'));
+        dispatch(updateScheme(response));
+    })
+    .catch(error => {
+        dispatch(requestFailed('scheme', error));
+        dispatch(updateScheme({}));
+    })
 };
