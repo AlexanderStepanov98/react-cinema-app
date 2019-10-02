@@ -2,35 +2,50 @@ import { actionTypes, initialState } from "../utils/constants";
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.UPDATE_CITIES:
+            return {
+                ...state,
+                cities: action.payload.cities,
+            };
+        case actionTypes.UPDATE_MOVIES:
+            return {
+                ...state,
+                movies: action.payload.movies,
+            };
+        case actionTypes.UPDATE_CINEMAS:
+            return {
+                ...state,
+                cinemas: action.payload.cinemas,
+            };
         case actionTypes.UPDATE_SELECTED_CITY:
             return {
                 ...state,
-                city: action.payload.city
+                city: action.payload.city,
             };
         case actionTypes.UPDATE_SELECTED_DATE:
             return {
                 ...state,
-                selectedDate: action.payload.selectedDate
+                selectedDate: action.payload.selectedDate,
             };
         case actionTypes.UPDATE_URL:
             return {
                 ...state,
-                url: action.payload.url
+                url: action.payload.url,
             };
         case actionTypes.UPDATE_SELECTED_MOVIE:
             return {
                 ...state,
-                selectedMovie: action.payload.selectedMovie
+                selectedMovie: action.payload.selectedMovie,
             };
         case actionTypes.UPDATE_SELECTED_CINEMA:
             return {
                 ...state,
-                selectedCinema: action.payload.selectedCinema
+                selectedCinema: action.payload.selectedCinema,
             };
         case actionTypes.UPDATE_CART:
             return {
                 ...state,
-                cart: action.payload.cart
+                cart: action.payload.cart,
             };
         case actionTypes.START_REQUEST:
             return {
